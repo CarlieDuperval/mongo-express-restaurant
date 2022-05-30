@@ -1,14 +1,15 @@
 const express = require ('express')
 const mongo = require ('mongodb').MongoClient
 const cors = require ('cors')
-const { MongoClient } = require('mongodb')
+
+require('dotenv/config')
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 
 
-const url = 'mongodb+srv://carlieDup:Aloulou0905@cluster0.ywpqv.mongodb.net?retryWrites=true&w=majority'
+const url = process.env.MONGO_URL
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -31,7 +32,7 @@ mongo.connect(url, options, (err, mongoClient) => {
 
 
 // Get
-app.get('/', (req, res) => res.status(200).send('Hey Class!'))
+app.get('/', (req, res) => res.status(200).send('Hey Class Good Morning!'))
 
 
 
